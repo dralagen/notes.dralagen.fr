@@ -52,15 +52,13 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
                 modified ||= file.data.frontmatter.modified as MaybeDate
                 published ||= file.data.frontmatter.published as MaybeDate
               } else if (source === "git") {
-                if (!repo) {
-                  // Get a reference to the main git repo.
-                  // It's either the same as the workdir,
-                  // or 1+ level higher in case of a submodule/subtree setup
-                  repo = Repository.discover(file.cwd)
-                }
+                // Get a reference to the main git repo.
+                // It's either the same as the workdir,
+                // or 1+ level higher in case of a submodule/subtree setup
+                repo = Repository.discover(fullFp)
 
                 try {
-                  modified ||= await repo.getFileLatestModifiedDateAsync(file.data.filePath!)
+                  modified ||= await repo.getFileLatestModifiedDateAsync(file.data.relativePath!)
                 } catch {
                   console.log(
                     chalk.yellow(
