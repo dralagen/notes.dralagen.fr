@@ -15,7 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         name: checkout 🛎️
-        with: 
+        with:
+          fetch-depth: 0  # Fetch all history for .GitInfo and .Lastmod
           submodules: recursive
       - uses: actions/setup-node@v4
         with:
