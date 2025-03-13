@@ -59,10 +59,10 @@ export const CreatedModifiedDate: QuartzTransformerPlugin<Partial<Options>> = (u
                   repo = Repository.discover(fullFp)
                 }
 
-                var absolutePath = fullFp.replace(repo.workdir()!, "")
+                var relativePath = fullFp.replace(repo.workdir()!, "")
 
                 try {
-                  modified ||= await repo.getFileLatestModifiedDateAsync(absolutePath)
+                  modified ||= await repo.getFileLatestModifiedDateAsync(relativePath)
                 } catch {
                   console.log(
                     chalk.yellow(
