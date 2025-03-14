@@ -17,7 +17,7 @@ jobs:
         name: checkout 🛎️
         with:
           token: ${{ secrets.PAT }}
-          fetch-depth: 0  # Fetch all history for .GitInfo and .Lastmod
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
           submodules: recursive
       - uses: actions/setup-node@v4
         with:
