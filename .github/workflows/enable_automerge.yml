@@ -4,7 +4,8 @@ on:
   pull_request:
     branches:
       - 'dependabot/**'
-
+    types: 
+      - opened
 jobs:
   automerge:
     name: Enable automerge on dependabot PRs
