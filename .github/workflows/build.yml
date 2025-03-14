@@ -12,9 +12,9 @@ jobs:
       - uses: actions/checkout@v4
         name: checkout 🛎️
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
           submodules: false
-          
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -25,15 +25,15 @@ jobs:
           key: node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             node-
-      
+
       - name: Install Dependencies
         run: npm ci
-        
+
       - name: Check types and style
         run: npm run check
-      
+
       - name: Test
         run: npm run test
-      
+
       - name: Ensure Quartz builds, check bundle info
         run: npx quartz build --bundleInfo -d docs
