@@ -15,7 +15,13 @@ const config: QuartzConfig = {
     analytics: null,
     locale: "fr-FR",
     baseUrl: "notes.dralagen.fr",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: [
+      "private", 
+      "templates", 
+      ".*",
+      "copilot-*",
+      "!(PublicMedia)**/!(*.md)", "!(*.md)"
+    ],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
@@ -73,7 +79,7 @@ const config: QuartzConfig = {
     ],
     filters: [
       Plugin.RemoveDrafts(),
-      Plugin.ExplicitPublish()
+      Plugin.ExplicitPublish(),
     ],
     emitters: [
       Plugin.AliasRedirects(),
