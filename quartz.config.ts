@@ -15,7 +15,7 @@ const config: QuartzConfig = {
     analytics: {
       provider: "umami",
       websiteId: "faaae90c-17a3-4e1d-8939-5a550e597c83",
-      host: "https://cloud.umami.is"
+      host: "https://cloud.umami.is",
     },
     locale: "fr-FR",
     baseUrl: "notes.dralagen.fr",
