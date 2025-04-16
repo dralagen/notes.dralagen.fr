@@ -1,4 +1,4 @@
-import { QuartzConfig } from "./quartz/cfg"
+import { Analytics, QuartzConfig } from "./quartz/cfg"
 import * as Plugin from "./quartz/plugins"
 
 /**
@@ -13,10 +13,10 @@ const config: QuartzConfig = {
     enableSPA: true,
     enablePopovers: true,
     analytics: {
-      provider: "umami",
-      websiteId: "faaae90c-17a3-4e1d-8939-5a550e597c83",
-      host: "https://cloud.umami.is",
-    },
+      provider: process.env.ANALYTICS_PROVIDER,
+      websiteId: process.env.ANALYTICS_WEBSITE_ID,
+      host: process.env.ANALYTICS_HOST,
+    } as Analytics,
     locale: "fr-FR",
     baseUrl: "notes.dralagen.fr",
     ignorePatterns: [
