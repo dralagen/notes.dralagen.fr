@@ -5,7 +5,12 @@ import * as Component from "./quartz/components"
 export const sharedPageComponents: SharedLayout = {
   head: Component.Head(),
   header: [],
-  afterBody: [],
+  afterBody: [
+    Component.ConditionalRender({
+      condition: (page) => page.fileData.slug === "index",
+      component: Component.RecentNotes({ limit: 5 }),
+    }),
+  ],
   footer: Component.Footer({
     links: {
       GitHub: "https://github.com/dralagen/notes.dralagen.fr",
