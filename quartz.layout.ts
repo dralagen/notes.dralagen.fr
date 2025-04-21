@@ -13,7 +13,9 @@ export const sharedPageComponents: SharedLayout = {
   ],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/dralagen/notes.dralagen.fr",
+      GitHub: "https://github.com/dralagen",
+      RSS: "https://dralagen.fr/rss.xml",
+      LinkedIn: "https://www.linkedin.com/in/a-garandel/",
     },
   }),
 }
