@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Dralagen's notes",
+    pageTitle: "Dralagen",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -18,7 +18,7 @@ const config: QuartzConfig = {
       host: process.env.ANALYTICS_HOST,
     } as Analytics,
     locale: "fr-FR",
-    baseUrl: "notes.dralagen.fr",
+    baseUrl: "dralagen.fr",
     ignorePatterns: [
       "private",
       "templates",
