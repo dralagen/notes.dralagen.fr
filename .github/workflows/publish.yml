@@ -26,6 +26,10 @@ jobs:
         run: npm ci
       - name: Build Quartz
         run: npx quartz build -d content/garden
+        env:
+          ANALYTICS_PROVIDER: ${{ vars.ANALYTICS_PROVIDER }}
+          ANALYTICS_WEBSITE_ID: ${{ vars.ANALYTICS_WEBSITE_ID }}
+          ANALYTICS_HOST: ${{ vars.ANALYTICS_HOST }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
