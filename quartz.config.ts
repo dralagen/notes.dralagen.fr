@@ -23,9 +23,6 @@ const config: QuartzConfig = {
       "private",
       "templates",
       ".*",
-      "copilot-*",
-      "!(PublicMedia)**/!(*.md)",
-      "!(*.md)",
     ],
     defaultDateType: "modified",
     theme: {
