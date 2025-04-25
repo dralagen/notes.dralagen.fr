@@ -19,11 +19,7 @@ const config: QuartzConfig = {
     } as Analytics,
     locale: "fr-FR",
     baseUrl: "dralagen.fr",
-    ignorePatterns: [
-      "private",
-      "templates",
-      ".*",
-    ],
+    ignorePatterns: ["private", "templates", ".*"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
