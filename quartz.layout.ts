@@ -1,5 +1,8 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { ContentDetails } from "./quartz/plugins/emitters/contentIndex"
+import { FileTrieNode } from "./quartz/util/fileTrie"
+import { SimpleSlug } from "./quartz/util/path"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -8,7 +11,12 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [
     Component.ConditionalRender({
       condition: (page) => page.fileData.slug === "index",
-      component: Component.RecentNotes({ limit: 5 }),
+      component: Component.RecentNotes({
+        title: "Derniers articles",
+        filter: (page) => page.frontmatter?.tags?.includes("blog") === true,
+        linkToMore: "tags/blog" as SimpleSlug,
+        limit: 5,
+      }),
     }),
   ],
   footer: Component.Footer({
@@ -44,7 +52,9 @@ export const defaultContentPageLayout: PageLayout = {
         { Component: Component.ReaderMode() },
       ],
     }),
-    Component.DesktopOnly(Component.Explorer()),
+    Component.Explorer({
+      filterFn: hasBlogTag,
+    }),
   ],
   right: [
     // Component.Graph(),
@@ -68,7 +78,17 @@ export const defaultListPageLayout: PageLayout = {
         { Component: Component.Darkmode() },
       ],
     }),
-    Component.DesktopOnly(Component.Explorer()),
+    Component.Explorer({
+      filterFn: hasBlogTag,
+    }),
   ],
   right: [],
+}
+
+function hasBlogTag(node: FileTrieNode<ContentDetails>): boolean {
+  console.log(node)
+  if (node.isFolder) {
+    return node.children.some((child) => hasBlogTag(child))
+  }
+  return node.data?.tags?.includes("blog") === true
 }
