@@ -11,8 +11,8 @@ export const sharedPageComponents: SharedLayout = {
       condition: (page) => page.fileData.slug === "index",
       component: Component.RecentNotes({
         title: "Derniers articles",
-        filter: (page) => page.frontmatter?.tags?.includes("blog") === true,
-        linkToMore: "tags/blog" as SimpleSlug,
+        filter: (page) => page.frontmatter?.tags?.includes("article") === true,
+        linkToMore: "tags/article" as SimpleSlug,
         limit: 5,
       }),
     }),
