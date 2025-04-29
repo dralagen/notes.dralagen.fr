@@ -1,5 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { SimpleSlug } from "./quartz/util/path"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -8,7 +9,12 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [
     Component.ConditionalRender({
       condition: (page) => page.fileData.slug === "index",
-      component: Component.RecentNotes({ limit: 5 }),
+      component: Component.RecentNotes({
+        title: "Derniers articles",
+        filter: (page) => page.frontmatter?.tags?.includes("blog") === true,
+        linkToMore: "tags/blog" as SimpleSlug,
+        limit: 5,
+      }),
     }),
   ],
   footer: Component.Footer({
